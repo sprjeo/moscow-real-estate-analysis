@@ -5,20 +5,16 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("data\\moscow_flats_dataset_eng.csv")
 
 pd.set_option('display.float_format', '{:.2f}'.format)
-#print(df.head())
-#print(df.shape)
-#print(df.columns)
-#print(df.dtypes)
-#print(df.info())
-#print(df['price'].describe())
-#print(df['price'].median())
-#print(df.loc[df['price'].idxmax()])
-#print(df.isna().sum())
-#print(df.isna().mean() * 100)
 
-#print(df['region_of_moscow'].unique(),
-#df['region_of_moscow'].value_counts())
-#print(df[df.duplicated(keep=False)])
+def print_info(df):
+    print('head:\n', df.head())
+    print('\nshape:\n', df.shape) 
+    print('\ncolumns:\n', df.columns)
+    print('\ntypes:\n', df.dtypes)
+    print('\ninfo:')
+    df.info()
+    print('\npercentage of missing values ​​for each column:\n', df.isna().mean() * 100)
+
 
 def suspicious_values(df):
     invalid_space = df['total_area'] <= 0
@@ -28,17 +24,31 @@ def suspicious_values(df):
 
     max_space_limit = 500  
     unrealistic_space = df['total_area'] > max_space_limit
-
-    low_price_limit = df['price'].quantile(0.01)
-    high_price_limit = df['price'].quantile(0.99)
-    suspicious_price = (df['price'] < low_price_limit) | (df['price'] > high_price_limit)
     
-    all_anomalies = invalid_space | invalid_price | invalid_rooms | invalid_floor | unrealistic_space | suspicious_price
+    all_anomalies = invalid_space | invalid_price | invalid_rooms | invalid_floor | unrealistic_space
     
     suspicious_df = df[all_anomalies]
     print(f"Suspicious lines found: {len(suspicious_df)}")
     return suspicious_df
 
+
+def delete_erroneous_values(df):
+    df = df.drop_duplicates()
+
+    df['ceiling_height'] = df['ceiling_height'].fillna(df['ceiling_height'].median())
+    df = df.dropna(subset=['number_of_floors'])
+
+    df = df[(df['total_area'] > 0) &
+            (df['price'] > 0) &
+            (df['number_of_rooms'] >= 0) &
+            (df['floor'] > 0) &
+            (df['floor'] <= df['number_of_floors']) &
+            (df['number_of_floors'] > 0) &
+            (df['ceiling_height'] > 0)
+            ]
+    return df
+
+df = delete_erroneous_values(df)
 
 def price_visualization(df):
 
@@ -64,16 +74,12 @@ def price_visualization(df):
     ax.set_title('Distribution of real estate prices')
     ax.set_xlabel('Price (logarithmic scale)')
     ax.set_ylabel('Number of objects')
-    ax.grid(True, which="both", linestyle="--", alpha=0.5)
+    ax.grid(True, which='both', linestyle='--', alpha=0.5)
     ax.legend(fontsize=11)
 
     plt.savefig('results/price_distribution.png')
     plt.close()
 
-#price_visualization(df)
-
-#print(df['total_area'].describe())
-#print(df['total_area'].median())
 
 def area_visualization(df):
     _, ax = plt.subplots(figsize=(10, 6))
@@ -95,7 +101,6 @@ def area_visualization(df):
     plt.savefig('results/area_distribution.png')
     plt.close()
 
-#area_visualization(df)
 
 
 def area_and_price_visualization(df):
@@ -118,10 +123,11 @@ def area_and_price_visualization(df):
     plt.savefig('results/area_price_scatter.png')
     plt.close()
 
-#area_and_price_visualization(df)
 
-#print(df[['total_area', 'price']].corr())
-#area_and_price_visualization(df)
+
+def print_corr(df):
+    print('correlation between price and area:\n',df[['total_area', 'price']].corr())
+
 
 df['price_per_m2'] = df['price'] / df['total_area']
 
@@ -157,7 +163,7 @@ def price_per_square_meter_analysis(df):
     ax.set_title('Distribution of price per square meter for real estate properties')
     ax.set_xlabel('Price per m$^2$, RUB (log scale)')
     ax.set_ylabel('Number of objects')
-    ax.grid(True, which="both", linestyle="--", alpha=0.5)
+    ax.grid(True, which='both', linestyle='--', alpha=0.5)
     
     plt.savefig('results/price_per_square_meter_distribution.png')
     plt.close()
@@ -171,8 +177,44 @@ def price_per_square_meter_analysis(df):
         'distribution' : 'saved in the "results" folder'
         }
 
-#result = price_per_square_meter_analysis(df)
-#print(f"Average price per m^2: {result['average price per m^2']:.0f} RUB")
-#print(f"Median price per m^2: {result['median price per m^2']:.0f} RUB")
-#print(f"Number of outliers: {result['outliers_count']}")
+def analysis_of_regions(df):
+    
+    result = df.groupby('region_of_moscow').agg({
+        'price' : 'median',
+        'price_per_m2' : 'median',
+        'region_of_moscow' : 'count'
+        })
+    result = result.rename(columns={
+        'price': 'median_price',
+        'price_per_m2': 'median_price_per_m2',
+        'region_of_moscow': 'count'
+    })
+    return result
 
+
+def region_price_per_m2_visualization(df):
+    _, ax = plt.subplots(figsize=(10, 6))
+
+    median_prices = df.groupby('region_of_moscow')['price_per_m2'].median()
+    ax.bar(median_prices.index, median_prices.values, color='lightblue')
+    
+    ax.set_title('Median price per m$^2$ by region')
+    ax.set_xlabel('Region')
+    ax.set_ylabel('Median price per m$^2$, RUB')
+    ax.grid(True, axis='y', linestyle='--', alpha=0.5)
+    
+    plt.savefig('results/region_price_per_m2.png')
+    plt.close()
+
+
+def main():
+    price_visualization(df)
+    area_visualization(df)
+    area_and_price_visualization(df)
+    price_per_square_meter_analysis(df)
+    analysis_of_regions(df)
+    region_price_per_m2_visualization(df)
+
+
+if __name__ == "__main__":
+    main()
