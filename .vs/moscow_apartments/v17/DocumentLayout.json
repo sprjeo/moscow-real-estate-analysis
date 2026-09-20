@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\MyPractice\\moscow_apartments\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|C:\\Users\\User\\MyPractice\\moscow_apartments\\analysis.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|solutionrelative:analysis.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|C:\\Users\\User\\MyPractice\\moscow_apartments\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|C:\\Users\\User\\MyPractice\\moscow_apartments\\analysis.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7B574BB8-15E7-43AB-9EDC-E90FD66771B0}|moscow_apartments.pyproj|solutionrelative:analysis.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +34,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\User\\MyPractice\\moscow_apartments\\README.md",
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\User\\MyPractice\\moscow_apartments\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-09-04T14:08:30.378Z"
+              "WhenOpened": "2026-09-04T14:08:30.378Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "analysis.py",
               "DocumentMoniker": "C:\\Users\\User\\MyPractice\\moscow_apartments\\analysis.py",
               "RelativeDocumentMoniker": "analysis.py",
               "ToolTip": "C:\\Users\\User\\MyPractice\\moscow_apartments\\analysis.py",
               "RelativeToolTip": "analysis.py",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAUwKsAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAUwNwAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-09-04T14:08:16.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-04T14:08:16.069Z"
             }
           ]
         }

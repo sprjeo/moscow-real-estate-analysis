@@ -216,5 +216,6 @@ def main():
     region_price_per_m2_visualization(df)
 
 
+
 if __name__ == "__main__":
     main()
