@@ -10,8 +10,8 @@ The project investigates price distribution, the relationship between area and p
 The dataset contains information about properties in Moscow, including:
 
 * price — price of the property in rubles
-* total_area — total floor area, m^2^
-* living_area — living area, m^2^
+* total_area — total floor area, m²
+* living_area — living area, m²
 * floor — floor number
 * number_of_floors — number of floors in the building
 * construction_year — year of construction
@@ -61,12 +61,12 @@ The mean is almost twice the median, which indicates a right-skewed distribution
 
 ![Area distribution](results/area_distribution.png)
 
-* Median area: 70.85 m^2^
-* Mean area: 84.14 m^2^
-* Minimum: 9 m^2^
-* Maximum: 530 m^2^
+* Median area: 70.85 m²
+* Mean area: 84.14 m²
+* Minimum: 9 m²
+* Maximum: 530 m²
 
-The mean area (84.14 m^2^) is higher than the median (70.85 m^2^), indicating a right-skewed distribution.
+The mean area (84.14 m²) is higher than the median (70.85 m²), indicating a right-skewed distribution.
 
 ### 3. Area and price relationship
 
@@ -80,16 +80,16 @@ There is a clear positive relationship between area and price. However, the spre
 
 ![Price per square meter distribution](results/price_per_square_meter_distribution.png)
 
-* Median price per m^2^: approximately 400,000 RUB
-* Mean price per m^2^ is higher than the median, indicating a right-skewed distribution
+* Median price per m²: approximately 400,000 RUB
+* Mean price per m² is higher than the median, indicating a right-skewed distribution
 
-A large share of properties is concentrated in the range of 200,000–500,000 RUB per m^2^.
+A large share of properties is concentrated in the range of 200,000–500,000 RUB per m².
 
 ### 5. Price per square meter by region
 
 ![Price per square meter by region](results/region_price_per_m2.png)
 
-| Region | Count | Median price, RUB | Median price per m^2^, RUB |
+| Region | Count | Median price, RUB | Median price per m², RUB |
 |--------|-------|-------------------|--------------------------|
 | CAR (Central) | 1,662 | 109,213,650 | 949,276 |
 | WAR (Western) | 1,261 | 34,800,000 | 478,571 |
@@ -101,14 +101,14 @@ A large share of properties is concentrated in the range of 200,000–500,000 RU
 | SWAR (South-Western) | 467 | 24,000,000 | 353,897 |
 | EAR (Eastern) | 376 | 13,000,000 | 285,613 |
 
-The Central Administrative Region has the highest median price per m^2^ (949,276 RUB), almost twice the value of the next highest region, WAR (478,571 RUB). The Eastern region has the lowest median price per m^2^ (285,613 RUB).
+The Central Administrative Region has the highest median price per m² (949,276 RUB), almost twice the value of the next highest region, WAR (478,571 RUB). The Eastern region has the lowest median price per m² (285,613 RUB).
 
 ## Key findings
 
 1. The median property price in Moscow is 30.5 million RUB, while the mean is 59.9 million RUB — almost twice as high. This indicates a strong right-skewed distribution with a small number of very expensive properties.
 2. The correlation between area and price is 0.75 — a strong positive relationship. Larger properties tend to be more expensive, but the spread of prices grows with area.
-3. The median price per square meter varies significantly between administrative regions — from 285,613 RUB in the Eastern district to 949,276 RUB in the Central district, a difference of 3.3x. The median price per m^2^ in the Central region is more than twice that of the next highest region (WAR).
-4. The rankings by median total price and median price per m^2^ are broadly similar. Further analysis would be needed to separate the effects of property size and price per m² on regional price differences.
+3. The median price per square meter varies significantly between administrative regions — from 285,613 RUB in the Eastern district to 949,276 RUB in the Central district, a difference of 3.3x. The median price per m² in the Central region is more than twice that of the next highest region (WAR).
+4. The rankings by median total price and median price per m² are broadly similar. Further analysis would be needed to separate the effects of property size and price per m² on regional price differences.
 
 ## Technologies
 
