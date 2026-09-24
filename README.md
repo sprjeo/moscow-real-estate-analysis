@@ -7,6 +7,10 @@ The project investigates price distribution, the relationship between area and p
 
 ## Dataset
 
+Source: https://www.kaggle.com/datasets/ivan314sh/prices-of-moscow-apartments
+
+License: MIT
+
 The dataset contains information about properties in Moscow, including:
 
 * price — price of the property in rubles
